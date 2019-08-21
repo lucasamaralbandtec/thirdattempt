@@ -1,0 +1,29 @@
+
+int pinoSensor = 0; //Saída do sensor na A0
+int valorLido = 0; //Variável auxiliar.
+float temperatura = 0; //Variável que armazenará a temperatura lida
+int linha = 0; //Variável que se refera as linhas do excel
+
+void setup() { //Função que será executada uma
+  Serial.begin(9600); //Inicia a comunicação serial a 9600 bauds.
+  Serial.println("CLEARDATA"); //reset comunicação serial
+  Serial.println("LABEL, Hora, Temperatura, linha"); //Nomeia a coluna
+  
+}
+void loop() {//Função que será executada continuamente.
+  valorLido = (valorLido * 0.00488); //5 volt/1024 = 0,0048 precisão do A/D
+  temperatura = anaogRead(pinoSenor); //Leitura analógica da porta A0
+  temperatura = temperatura *100; // Converte milivolts para celsius - cada 10mV == 1 grau C°
+  linha++; //Incrementa linha para que a leitura pule linha
+  Serial.print("DATA, TIME, "); //Inicia a impressão de dados, fica sempre iniciando
+  Serial.print(temperatura);
+  Serial.print(",");
+  Serial.println(linha);
+  if(linha > 100) //Loop para limitar a quantidade de dados
+  {
+    linha = 0;
+    Serial.println("ROW, SET, 2"); //Alimentação das linhas empre com os dados inniciados
+  }
+  delay(1000); //Tempo de 5 segundos para realizar outra leitura.
+//Número da porta COM:
+}
