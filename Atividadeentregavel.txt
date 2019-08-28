@@ -1,0 +1,81 @@
+1) create database filme
+
+2) use database filme
+
+3) create table filme (
+idfilme int primary key auto_increment,
+titulo varchar(40),
+genero varchar(40)
+);
+
+*coluna diretor não foi colocada
+
+4) describe filme;
+
+5) insert into filme values
+(null, "Vingadores: Era de Ultron", "Ação");
+
+6) insert into filme values
+(null, "O Jogo de Imitação", null);
+
+7) insert into filme values
+(null, "A Era do Gelo", null);
+
+8) insert into filme values
+(null, "Vingadores: Guerra Infinita", "Ação"),
+(null, "Vingadores: Ultimato", "Ação"),
+(null, "Mercenários", "Ação"),
+(null, "Hotel Ruanda", "Drama"),
+(null, "Interestelar", "Drama"),
+(null, "Bob Esponja: Herói Fpra D'água", "Aventura"),
+(null, "Rambo", "Ação"),
+(null, "O Lado bom da vida", "Romance"),
+(null, "Esposa de Mentirinha", "Comédia");
+
+Observação) Não havia colocado a coluna diretor então o adicionei depois
+
+----alter table filme add diretor varchar(40)
+
+9) update filme set diretor= 'Tarantino' where idfilme=5;
+
+10) update filme set diretor='Leroy Jenkins' where idfilme in (6,11);
+
+11) update filme set diretor = 'Romarinho' , genero ='Comédia' where idfilme in (4,9);
+
+12) update filme set genero ='Comédia Romantica' where idfilme in (5,6);
+
+13) select*from filme;
+
+14) update filme set genero ='Adultos' where idfilme in (2,11);
+
+15) update filme set diretor ='Irmãos Dwight' where idfilme = 2;
+
+16) update filme set diretor ='Irmãos Dwight', genero ='Show' where idfilme = 3;
+
+17) update filme set genero ='Ficção', diretor ='Mathew Quick' where idfilme = 7;
+
+18) update filme set genero ='Masterclass', diretor ='Alexander the great' where idfilme = 8;
+
+19) update filme set genero ='Anime' where idfilme = 10;
+
+20) select*from filme;
+
+21) delete from filme where idfilme = 6;
+
+22) delete from filme where idfilme in (11,5);
+
+23) alter table filme add ano int;
+
+24) select*from filme;
+
+25) alter table filme modify titulo  varchar(50);
+
+26) describe filme;
+
+27) alter table filme drop column ano; 
+
+28) select*from filme order by titulo;
+
+29) select*from filme order by diretor;
+
+30) select*from filme order by  Autor desc, titulo desc;
